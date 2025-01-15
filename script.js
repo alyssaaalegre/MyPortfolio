@@ -20,3 +20,39 @@ function toggleMenu() {
     });
   });
   
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const detailsContainers = document.querySelectorAll('.details-container');
+
+    detailsContainers.forEach(function(container) {
+        container.addEventListener('mouseenter', function() {
+            container.classList.add('hovered');
+        });
+
+        container.addEventListener('mouseleave', function() {
+            container.classList.remove('hovered');
+        });
+    });
+});
+
+let lastScrollTop = 0; // Variable to keep track of the last scroll position
+
+// Adding scroll event listener
+window.addEventListener('scroll', function() {
+    const contactLink = document.getElementById('contactLink');
+    const currentScroll = window.scrollY; // Get the current scroll position
+
+    // Show or hide the contact link based on scroll direction
+    if (currentScroll > lastScrollTop && currentScroll > 300) {
+        // Scrolling down and passed 300px, show the button
+        contactLink.classList.add('visible');
+        contactLink.classList.remove('hidden');
+    } else if (currentScroll < lastScrollTop) {
+        // Scrolling up, hide the button
+        contactLink.classList.remove('visible');
+        contactLink.classList.add('hidden');
+    }
+
+    // Update the last scroll position
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
