@@ -404,7 +404,7 @@ article .icon {
 }
 
 /* Make the link visible when scrolled down */
-/*/
+
 #contactLink.visible {
     opacity: 1;
     transform: scale(1);
